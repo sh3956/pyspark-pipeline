@@ -24,9 +24,9 @@ def get_grade(value):
 
 if __name__ == "__main__":
     spark = SparkSession.builder.appName("project").getOrCreate()
-    data2017 = spark.read.format("csv").load("data/Beijing_2017_HourlyPM25_created20170803.csv")
-    data2016 = spark.read.format("csv").load("data/Beijing_2017_HourlyPM25_created20170201.csv")
-    data2015 = spark.read.format("csv").load("data/Beijing_2015_HourlyPM25_created20160201.csv")
+    data2017 = spark.read.format("csv").option("header","true").option("inferSchema","true").load("data/Beijing_2017_HourlyPM25_created20170803.csv")
+    data2016 = spark.read.format("csv").option("header","true").option("inferSchema","true").load("data/Beijing_2017_HourlyPM25_created20170201.csv")
+    data2015 = spark.read.format("csv").option("header","true").option("inferSchema","true").load("data/Beijing_2015_HourlyPM25_created20160201.csv")
 
     grade_function_udf = udf(get_grade, StringType())
     group2017 = data2017.withColumn("Grade", grade_function_udf(data2017["Value"])).groupby("Grade").count()
