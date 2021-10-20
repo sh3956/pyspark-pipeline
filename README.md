@@ -56,7 +56,14 @@ copy and paste scripts from `spark_es.py` into the pyspark shell.
 
 
 ### Azkaban
-To use Azkaban scheduler, you need to compress following files and upload the zip file into the Azkaban main page. Then, click `Execute Flow`. 
+To use Azkaban scheduler, you need to compress following files and upload the zip file into the Azkaban main page. 
+
+1. wea.sh
+2. weather.job
+3. spark_es.py
+4. elasticsearch-spark-{your_version}.jar
+
+Then, click `Execute Flow`. 
 ![Product Screen Shot](azkaban.png) 
 
 
